@@ -192,6 +192,7 @@
         var xhr = new XMLHttpRequest()
         xhr.open(this.httpMethod, this.url, true)
         xhr.setRequestHeader('Authorization', 'Bearer ' + this.token)
+        xhr.setRequestHeader('Accept', 'application/vnd.vimeo.*+json;version=3.0')
         xhr.setRequestHeader('Content-Type', 'application/json')
 
         xhr.onload = function(e) {
@@ -238,8 +239,7 @@
         var xhr = new XMLHttpRequest()
         xhr.open('PUT', this.url, true)
         xhr.setRequestHeader('Content-Type', this.contentType)
-        xhr.setRequestHeader('Accept', 'application/vnd.vimeo.*+json;version=3.4')
-            // xhr.setRequestHeader('Content-Length', this.file.size)
+        // xhr.setRequestHeader('Content-Length', this.file.size)
         xhr.setRequestHeader('Content-Range', 'bytes ' + this.offset + '-' + (end - 1) + '/' + this.file.size)
 
         if (xhr.upload) {
@@ -301,7 +301,7 @@
 
                 // Example of location: ' /videos/115365719', extract the video id only
                 var video_id = location.split('/').pop()
-                    // Update the video metadata
+                // Update the video metadata
                 this.onUpdateVideoData_(video_id)
             } else {
                 this.onCompleteError_(e)
@@ -348,9 +348,9 @@
             if (e.target.response) {
                 // add the returned metadata to the metadata array
                 var meta = JSON.parse(e.target.response)
-                    // get the new index of the item
+                // get the new index of the item
                 var index = this.metadata.push(meta) - 1
-                    // call the complete method
+                // call the complete method
                 this.onComplete(video_id, index)
             } else {
                 this.onCompleteError_(e)
