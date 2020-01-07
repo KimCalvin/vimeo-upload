@@ -2,11 +2,11 @@
  | Vimeo-Upload: Upload videos to your Vimeo account directly from a
  |               browser or a Node.js app
  |
- |  ╭───╮╭─╮  
- |  │   ││ │╭─╮╭──┬──┬─╮╭───╮╭───╮   
+ |  ╭───╮╭─╮
+ |  │   ││ │╭─╮╭──┬──┬─╮╭───╮╭───╮
  |  │   ││ │├─┤│ ╭╮ ╭╮ ││ ─ ││╭╮ │  ╭────────┬─────────────────────╮
- |  ╰╮  ╰╯╭╯│ ││ ││ ││ ││  ─┤│╰╯ │  | UPLOAD │ ▒▒▒▒▒▒▒▒▒▒▒░░░░ %75 | 
- |   ╰────╯ ╰─╯╰─╯╰─╯╰─╯╰───╯╰───╯  ╰────────┴─────────────────────╯                    
+ |  ╰╮  ╰╯╭╯│ ││ ││ ││ ││  ─┤│╰╯ │  | UPLOAD │ ▒▒▒▒▒▒▒▒▒▒▒░░░░ %75 |
+ |   ╰────╯ ╰─╯╰─╯╰─╯╰─╯╰───╯╰───╯  ╰────────┴─────────────────────╯
  |
  |
  | This project was released under Apache 2.0" license.
@@ -238,6 +238,7 @@
         var xhr = new XMLHttpRequest()
         xhr.open('PUT', this.url, true)
         xhr.setRequestHeader('Content-Type', this.contentType)
+        xhr.setRequestHeader('Accept', 'application/vnd.vimeo.*+json;version=3.4')
             // xhr.setRequestHeader('Content-Length', this.file.size)
         xhr.setRequestHeader('Content-Range', 'bytes ' + this.offset + '-' + (end - 1) + '/' + this.file.size)
 
